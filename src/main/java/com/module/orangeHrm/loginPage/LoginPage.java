@@ -1,10 +1,10 @@
-package com.module.orangeHrm.LoginPage;
+package com.module.orangeHrm.loginPage;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import com.module.orangeHrm.Utils.PageHandle;
+import com.module.orangeHrm.utils.PageHandle;
 
 public class LoginPage {
 

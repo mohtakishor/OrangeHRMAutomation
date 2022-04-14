@@ -1,4 +1,4 @@
-package com.module.orangeHrm.Browsers;
+package com.module.orangeHrm.browsers;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;

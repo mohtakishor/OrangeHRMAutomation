@@ -4,9 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import com.module.orangeHrm.Utils.Constants;
-import com.module.orangeHrm.Utils.PageHandle;
-import com.module.orangeHrm.Utils.RandomData;
+import com.module.orangeHrm.utils.Constants;
+import com.module.orangeHrm.utils.PageHandle;
+import com.module.orangeHrm.utils.RandomData;
 
 public class CanditureForm {
 	WebDriver driver;

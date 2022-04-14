@@ -1,4 +1,4 @@
-package com.module.orangeHrm.Utils;
+package com.module.orangeHrm.utils;
 
 public class Constants {
 

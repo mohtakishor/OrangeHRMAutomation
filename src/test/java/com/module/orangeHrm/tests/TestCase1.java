@@ -9,11 +9,11 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import com.modeule.orangeHrm.homePage.HomePage;
-import com.module.orangeHrm.Browsers.ChromeBrowser;
-import com.module.orangeHrm.LoginPage.LoginPage;
-import com.module.orangeHrm.Utils.Constants;
+import com.module.orangeHrm.browsers.ChromeBrowser;
 import com.module.orangeHrm.candiateDetails.CanditureForm;
 import com.module.orangeHrm.candiateDetails.DownloadCandidateResume;
+import com.module.orangeHrm.loginPage.LoginPage;
+import com.module.orangeHrm.utils.Constants;
 
 public class TestCase1 {
 	WebDriver driver;

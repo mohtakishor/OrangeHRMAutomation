@@ -1,4 +1,4 @@
-package com.module.orangeHrm.Utils;
+package com.module.orangeHrm.utils;
 
 import java.util.List;
 
@@ -8,7 +8,6 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
 import java.io.File;
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
 
 public class PageHandle {
 	public static void selectFromDropDown(WebElement element, String value) {
