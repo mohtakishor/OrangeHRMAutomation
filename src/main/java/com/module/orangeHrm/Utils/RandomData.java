@@ -43,4 +43,12 @@ public class RandomData {
 			builder.append(ALPHANUM_LEXICON.charAt(rand.nextInt(ALPHANUM_LEXICON.length())));
 		return builder.toString();
 	}
+
+	public static int getRandomNumberBetween(int low, int high) {
+		if (low == high) {
+			return low;
+		}
+		int result = rand.nextInt(high - low) + low;
+		return result;
+	}
 }

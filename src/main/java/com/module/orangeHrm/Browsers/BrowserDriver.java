@@ -1,4 +1,4 @@
-package com.module.orangeHrm.LoginPage;
+package com.module.orangeHrm.Browsers;
 
 import org.openqa.selenium.WebDriver;
 
