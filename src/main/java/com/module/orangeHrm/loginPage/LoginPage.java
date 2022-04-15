@@ -9,9 +9,9 @@ import com.module.orangeHrm.utils.PageHandle;
 import io.qameta.allure.Step;
 
 public class LoginPage {
-	
-	private String loginId=System.getProperty("id");
-	private String loginPassowrd=System.getProperty("password");
+
+	private String loginId = System.getProperty("id");
+	private String loginPassowrd = System.getProperty("password");
 
 	WebDriver driver;
 	By userName = By.id("txtUsername");
@@ -25,13 +25,19 @@ public class LoginPage {
 	@Step("Enter user crendtial : UserID")
 	public LoginPage enterUserName() {
 		WebElement enterId = driver.findElement(userName);
-		PageHandle.clickAndSend(enterId,  loginId);
+		if (loginId == null) {
+			loginId = "Admin";
+		}
+		PageHandle.clickAndSend(enterId, loginId);
 		return new LoginPage(driver);
 	}
 
 	@Step("Enter user crendtial : Password")
 	public LoginPage enterPassword() {
 		WebElement enterPassword = driver.findElement(userPassword);
+		if (loginPassowrd == null) {
+			loginPassowrd = "admin123";
+		}
 		PageHandle.clickAndSend(enterPassword, loginPassowrd);
 		return new LoginPage(driver);
 	}
@@ -40,5 +46,4 @@ public class LoginPage {
 	public WebElement loginButton() {
 		return driver.findElement(loginButton);
 	}
-
 }

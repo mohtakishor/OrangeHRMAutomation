@@ -26,7 +26,7 @@ public class BasicTestCase {
 	CanditureForm canditureForm;
 	DownloadCandidateResume downloadCandidateResume;
 
-	@BeforeClass
+	@BeforeMethod
 	public void setup() {
 		System.setProperty("webdriver.chrome.driver", "C:\\BrowserStack\\chromedriver.exe");
 		driver = new ChromeBrowser().getDriver();
@@ -38,7 +38,7 @@ public class BasicTestCase {
 	@BeforeMethod
 	@Severity(SeverityLevel.CRITICAL)
 	@Description("Logged in as an Admin")
-	public void navigate_to_homepage_click_on_getstarted() {
+	public void toLoginAsAdmin() {
 		loginPage = new LoginPage(driver);
 		loginPage.enterUserName().enterPassword().loginButton().click();
 		canditateDetails = new HomePage(driver);
@@ -54,11 +54,11 @@ public class BasicTestCase {
 				.getApplicationStatus().assertApplicationStatus();
 	}
 
-//	@Test
-//	public void enter_userDetails() {
-//		downloadCandidateResume = new DownloadCandidateResume(driver);
-//		downloadCandidateResume.enterCandidateName().clickOnSearchButton().downloadResume();
-//	}
+	@Test
+	public void enter_userDetails() {
+		downloadCandidateResume = new DownloadCandidateResume(driver);
+		downloadCandidateResume.enterCandidateName().clickOnSearchButton().downloadResume();
+	}
 
 	@AfterTest
 	public void close() {

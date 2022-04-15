@@ -13,7 +13,7 @@ public class CanditureForm {
 	WebDriver driver;
 	static String candidateFirstName = "";
 	static String candidateLastName = "";
-	String actuallStatus="";
+	static String actuallStatus="";
 
 	public CanditureForm(WebDriver driver) {
 		this.driver = driver;
@@ -26,7 +26,7 @@ public class CanditureForm {
 	By selectRole = By.xpath("//select[@name='addCandidate[vacancy]']");
 	By uploadResume = By.xpath("//input[@id='addCandidate_resume']");
 	By saveCanditureDetail = By.id("btnSave");
-	By getStatusText = By.xpath("//span[text()='Status: Application Initiated']");
+	By getStatusText = By.xpath("//span[@class=\"status\"]");
 
 	public CanditureForm firstName() {
 		WebElement firstName = driver.findElement(enterFirstName);

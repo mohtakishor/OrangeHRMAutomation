@@ -2,9 +2,16 @@ package com.modeule.orangeHrm.homePage;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+
+import com.module.orangeHrm.utils.Constants;
+
+import io.netty.util.Constant;
 
 public class HomePage {
 	WebDriver driver;
+	static String loginValidation = "";
 
 	public HomePage(WebDriver driver) {
 		this.driver = driver;
@@ -15,7 +22,10 @@ public class HomePage {
 	By clickOnAdd = By.cssSelector("input#btnAdd");
 
 	public HomePage selectRecruitment() {
-		driver.findElement(clickOnRecruitment).click();
+		WebElement clickOnRecuirtment = driver.findElement(clickOnRecruitment);
+		clickOnRecuirtment.click();
+		loginValidation = clickOnRecuirtment.getText();
+		Assert.assertEquals(loginValidation, Constants.EXPECTEDLOGINPAGEVALIDATION);
 		return new HomePage(driver);
 	}
 

@@ -4,7 +4,7 @@
 	data-provider-thread-count="1" annotations="JDK">
 	<test verbose="2" name="Test">
 		<classes>
-			<class name="com.module.orangeHrm.tests.TestCase1">
+			<class name="com.module.orangeHrm.tests.BasicTestCase">
 				<methods>
 				</methods>
 			</class>
