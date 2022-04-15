@@ -7,6 +7,8 @@ import java.nio.file.Paths;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.module.orangeHrm.utils.Constants;
 import com.module.orangeHrm.utils.PageHandle;
@@ -16,6 +18,7 @@ import io.qameta.allure.Step;
 import java.nio.file.Files;
 
 public class DownloadCandidateResume {
+	private static final Logger logger = LoggerFactory.getLogger(DownloadCandidateResume.class);
 
 	By enterCandidateName = By.xpath("//input[@name='candidateSearch[candidateName]']");
 	By searchButton = By.xpath("//input[@name='btnSrch']");
@@ -33,6 +36,8 @@ public class DownloadCandidateResume {
 		WebElement candidateName = driver.findElement(enterCandidateName);
 		PageHandle.clickAndSend(candidateName,
 				CanditureForm.candidateFirstName + " " + CanditureForm.candidateLastName);
+		logger.info(
+				"Search the candidate as " + CanditureForm.candidateFirstName + " " + CanditureForm.candidateLastName);
 		return new DownloadCandidateResume(driver);
 	}
 
@@ -40,6 +45,7 @@ public class DownloadCandidateResume {
 	public DownloadCandidateResume clickOnSearchButton() {
 		WebElement clickSearchButton = driver.findElement(searchButton);
 		clickSearchButton.click();
+		logger.info("Click on search button to fetch the list");
 		return new DownloadCandidateResume(driver);
 	}
 
@@ -49,6 +55,7 @@ public class DownloadCandidateResume {
 		WebElement clickOnDownload = driver.findElement(downloadResume);
 		clickOnDownload.click();
 		PageHandle.waitUntilDownloadsComplete(driver, file);
+		logger.info("Download the PDF and attach the PDF with report");
 		attachPdf();
 		return new DownloadCandidateResume(driver);
 	}

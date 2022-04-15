@@ -3,6 +3,8 @@ package com.module.orangeHrm.loginPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.module.orangeHrm.utils.PageHandle;
 
@@ -10,8 +12,10 @@ import io.qameta.allure.Step;
 
 public class LoginPage {
 
+	private static final Logger logger = LoggerFactory.getLogger(LoginPage.class);
+
 	private String loginId = System.getProperty("id");
-	private String loginPassowrd = System.getProperty("password");
+	private String loginPassword = System.getProperty("password");
 
 	WebDriver driver;
 	By userName = By.id("txtUsername");
@@ -29,21 +33,24 @@ public class LoginPage {
 			loginId = "Admin";
 		}
 		PageHandle.clickAndSend(enterId, loginId);
+		logger.debug("Login as " + loginId);
 		return new LoginPage(driver);
 	}
 
 	@Step("Enter user crendtial : Password")
 	public LoginPage enterPassword() {
 		WebElement enterPassword = driver.findElement(userPassword);
-		if (loginPassowrd == null) {
-			loginPassowrd = "admin123";
+		if (loginPassword == null) {
+			loginPassword = "admin123";
 		}
-		PageHandle.clickAndSend(enterPassword, loginPassowrd);
+		PageHandle.clickAndSend(enterPassword, loginPassword);
+		logger.debug("Enter password as :-" + loginPassword);
 		return new LoginPage(driver);
 	}
 
 	@Step("Click on loginButton")
 	public WebElement loginButton() {
+		logger.info("clicked on loggin button");
 		return driver.findElement(loginButton);
 	}
 }

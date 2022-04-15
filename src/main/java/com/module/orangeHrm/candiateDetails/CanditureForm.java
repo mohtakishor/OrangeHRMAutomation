@@ -3,6 +3,8 @@ package com.module.orangeHrm.candiateDetails;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 
 import com.module.orangeHrm.utils.Constants;
@@ -12,6 +14,8 @@ import com.module.orangeHrm.utils.RandomData;
 import io.qameta.allure.Step;
 
 public class CanditureForm {
+	private static final Logger logger = LoggerFactory.getLogger(CanditureForm.class);
+
 	WebDriver driver;
 	static String candidateFirstName = "";
 	static String candidateLastName = "";
@@ -35,6 +39,7 @@ public class CanditureForm {
 		WebElement firstName = driver.findElement(enterFirstName);
 		candidateFirstName = RandomData.getRandomName();
 		PageHandle.clickAndSend(firstName, candidateFirstName);
+		logger.info("Enter the first name as :- " + candidateFirstName);
 		return new CanditureForm(driver);
 	}
 
@@ -43,6 +48,7 @@ public class CanditureForm {
 		WebElement lastName = driver.findElement(enterLastName);
 		candidateLastName = RandomData.getRandomName();
 		PageHandle.clickAndSend(lastName, candidateLastName);
+		logger.info("Enter the last name as :- " + candidateFirstName);
 		return new CanditureForm(driver);
 	}
 
@@ -50,6 +56,7 @@ public class CanditureForm {
 	public CanditureForm emailId() {
 		WebElement emailId = driver.findElement(enterEmailId);
 		PageHandle.clickAndSend(emailId, RandomData.getRandomName() + "@gmail.com");
+		logger.info("Enter the email id");
 		return new CanditureForm(driver);
 	}
 
@@ -57,6 +64,7 @@ public class CanditureForm {
 	public CanditureForm contactNum() {
 		WebElement contactNum = driver.findElement(enterContactNumebr);
 		PageHandle.clickAndSend(contactNum, RandomData.getRandomNumber());
+		logger.info("Enter the contact number");
 		return new CanditureForm(driver);
 	}
 
@@ -64,6 +72,7 @@ public class CanditureForm {
 	public CanditureForm roleSelection() {
 		WebElement dropDownRoleSelection = driver.findElement(selectRole);
 		PageHandle.selectRandomOption(dropDownRoleSelection);
+		logger.info("Select the role");
 		return new CanditureForm(driver);
 	}
 
@@ -71,6 +80,7 @@ public class CanditureForm {
 	public CanditureForm uploadResume() {
 		WebElement uploadDocs = driver.findElement(uploadResume);
 		uploadDocs.sendKeys(Constants.RESUMEPATH);
+		logger.info("Upload the resume from the given path :-" + Constants.RESUMEPATH);
 		return new CanditureForm(driver);
 	}
 
@@ -78,6 +88,7 @@ public class CanditureForm {
 	public CanditureForm clickSaveButton() {
 		WebElement saveButton = driver.findElement(saveCanditureDetail);
 		saveButton.click();
+		logger.info("Click on save button to save the canditure details");
 		return new CanditureForm(driver);
 	}
 
@@ -85,6 +96,7 @@ public class CanditureForm {
 	public CanditureForm getApplicationStatus() {
 		WebElement getStatus = driver.findElement(getStatusText);
 		actuallStatus = getStatus.getText();
+		logger.info("Status of the candidate application :-" + actuallStatus);
 		return new CanditureForm(driver);
 	}
 
