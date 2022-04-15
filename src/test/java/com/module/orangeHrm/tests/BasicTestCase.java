@@ -55,8 +55,8 @@ public class BasicTestCase {
 	public void createANewCandidateProfile() {
 		selectingCandidateToUpdateProfile();
 		canditureForm = new CanditureForm(driver);
-		canditureForm.firstName().lastName().emailId().contactNum().roleSelection().uploadResume()
-		.clickSaveButton().getApplicationStatus().assertApplicationStatus();
+		canditureForm.firstName().lastName().emailId().contactNum().roleSelection().uploadResume().clickSaveButton()
+				.getApplicationStatus().assertApplicationStatus();
 	}
 
 	@Test(description = "Downloading the resume")
@@ -64,8 +64,8 @@ public class BasicTestCase {
 	@Description("Search for the candidate which got created and download the resume")
 	public void enter_userDetails() {
 		canditateDetails = new HomePage(driver).selectRecruitment().selectCandidate();
-		downloadCandidateResume = new DownloadCandidateResume(driver).enterCandidateName()
-				.clickOnSearchButton().downloadResume();
+		downloadCandidateResume = new DownloadCandidateResume(driver).enterCandidateName().clickOnSearchButton()
+				.downloadResume();
 	}
 
 	@AfterTest

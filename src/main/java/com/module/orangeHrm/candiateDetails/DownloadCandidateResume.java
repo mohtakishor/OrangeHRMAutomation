@@ -1,6 +1,8 @@
 package com.module.orangeHrm.candiateDetails;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Paths;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -11,6 +13,7 @@ import com.module.orangeHrm.utils.PageHandle;
 
 import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
+import java.nio.file.Files;
 
 public class DownloadCandidateResume {
 
@@ -40,19 +43,29 @@ public class DownloadCandidateResume {
 		return new DownloadCandidateResume(driver);
 	}
 
-	@Attachment(value = "", type = ".pdf")
 	@Step("Click on the download tab to download the resume and the candidate profile")
 	public DownloadCandidateResume downloadResume() {
 		deleteDownloadedResume();
 		WebElement clickOnDownload = driver.findElement(downloadResume);
 		clickOnDownload.click();
 		PageHandle.waitUntilDownloadsComplete(driver, file);
+		attachPdf();
 		return new DownloadCandidateResume(driver);
+	}
+
+	@Attachment(value = "Attaching the downladed resume", type = "application/pdf")
+	public static byte[] attachPdf() {
+		try {
+			return Files.readAllBytes(Paths.get(Constants.DOWNLADEDRESUMEPATH));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	@Step("Check whether the file already exist if yes then delete the previous downloaded resume")
 	public void deleteDownloadedResume() {
-		file = new File(System.getProperty("user.dir") + "/" + Constants.RESUME);
+		file = new File(Constants.DOWNLADEDRESUMEPATH);
 		if (file.exists()) {
 			file.delete();
 		}

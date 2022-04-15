@@ -22,6 +22,7 @@ public class ChromeBrowser implements BrowserDriver {
 		prefs.put("profile.default_content_setting_values.notifications", 2);
 		prefs.put("download.default_directory", System.getProperty("user.dir"));
 		chromeOptions.setExperimentalOption("prefs", prefs);
+		chromeOptions.addArguments("--lang=en");
 		return chromeOptions;
 	}
 
