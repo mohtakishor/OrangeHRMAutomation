@@ -2,10 +2,10 @@ package com.module.orangeHrm.tests;
 
 import java.util.concurrent.TimeUnit;
 
-import org.aspectj.lang.annotation.Before;
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import com.modeule.orangeHrm.homePage.HomePage;
@@ -15,14 +15,18 @@ import com.module.orangeHrm.candiateDetails.DownloadCandidateResume;
 import com.module.orangeHrm.loginPage.LoginPage;
 import com.module.orangeHrm.utils.Constants;
 
-public class TestCase1 {
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+
+public class BasicTestCase {
 	WebDriver driver;
 	LoginPage loginPage;
 	HomePage canditateDetails;
 	CanditureForm canditureForm;
 	DownloadCandidateResume downloadCandidateResume;
 
-	@BeforeTest
+	@BeforeClass
 	public void setup() {
 		System.setProperty("webdriver.chrome.driver", "C:\\BrowserStack\\chromedriver.exe");
 		driver = new ChromeBrowser().getDriver();
@@ -32,26 +36,32 @@ public class TestCase1 {
 	}
 
 	@BeforeMethod
+	@Severity(SeverityLevel.CRITICAL)
+	@Description("Logged in as an Admin")
 	public void navigate_to_homepage_click_on_getstarted() {
 		loginPage = new LoginPage(driver);
 		loginPage.enterUserName().enterPassword().loginButton().click();
+		canditateDetails = new HomePage(driver);
+		canditateDetails.selectRecruitment().selectCandidate().clickOnAdd();
 	}
 
 	@Test(priority = 1, description = "Creating canditate details")
+	@Severity(SeverityLevel.CRITICAL)
+	@Description("Giving the details of the candiate and submitting the resume")
 	public void createANewCandidateProfile() {
-		canditateDetails = new HomePage(driver);
-		canditateDetails.selectRecruitment().selectCandidate().clickOnAdd();
-
 		canditureForm = new CanditureForm(driver);
-		canditureForm.firstName().lastName().emailId().contactNum().roleSelection().uploadResume().clickSaveButton();
-		
-		canditateDetails.selectCandidate();
-
-		enter_userDetails();
+		canditureForm.firstName().lastName().emailId().contactNum().roleSelection().uploadResume().clickSaveButton()
+				.getApplicationStatus().assertApplicationStatus();
 	}
 
-	public void enter_userDetails() {
-		downloadCandidateResume = new DownloadCandidateResume(driver);
-		downloadCandidateResume.enterCandidateName().clickOnSearchButton().downloadResume();
+//	@Test
+//	public void enter_userDetails() {
+//		downloadCandidateResume = new DownloadCandidateResume(driver);
+//		downloadCandidateResume.enterCandidateName().clickOnSearchButton().downloadResume();
+//	}
+
+	@AfterTest
+	public void close() {
+		driver.close();
 	}
 }

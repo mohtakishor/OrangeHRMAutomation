@@ -3,6 +3,7 @@ package com.module.orangeHrm.candiateDetails;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 
 import com.module.orangeHrm.utils.Constants;
 import com.module.orangeHrm.utils.PageHandle;
@@ -12,6 +13,7 @@ public class CanditureForm {
 	WebDriver driver;
 	static String candidateFirstName = "";
 	static String candidateLastName = "";
+	String actuallStatus="";
 
 	public CanditureForm(WebDriver driver) {
 		this.driver = driver;
@@ -24,6 +26,7 @@ public class CanditureForm {
 	By selectRole = By.xpath("//select[@name='addCandidate[vacancy]']");
 	By uploadResume = By.xpath("//input[@id='addCandidate_resume']");
 	By saveCanditureDetail = By.id("btnSave");
+	By getStatusText = By.xpath("//span[text()='Status: Application Initiated']");
 
 	public CanditureForm firstName() {
 		WebElement firstName = driver.findElement(enterFirstName);
@@ -68,4 +71,15 @@ public class CanditureForm {
 		saveButton.click();
 		return new CanditureForm(driver);
 	}
+
+	public CanditureForm getApplicationStatus() {
+		WebElement getStatus = driver.findElement(getStatusText);
+		actuallStatus = getStatus.getText();
+		return new CanditureForm(driver);
+	}
+	
+	public void assertApplicationStatus() {
+		Assert.assertEquals(actuallStatus, Constants.EXPECTEDRESULT);
+	}
+
 }

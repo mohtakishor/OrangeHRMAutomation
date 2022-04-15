@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="OrangeHrm Creation and Downloading the resume for the canditure created"
+	data-provider-thread-count="1" annotations="JDK">
+	<test verbose="2" name="Test">
+		<classes>
+			<class name="com.module.orangeHrm.tests.TestCase1">
+				<methods>
+				</methods>
+			</class>
+		</classes>
+	</test>
+</suite>
