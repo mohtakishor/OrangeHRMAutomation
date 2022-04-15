@@ -9,11 +9,13 @@ import com.module.orangeHrm.utils.Constants;
 import com.module.orangeHrm.utils.PageHandle;
 import com.module.orangeHrm.utils.RandomData;
 
+import io.qameta.allure.Step;
+
 public class CanditureForm {
 	WebDriver driver;
 	static String candidateFirstName = "";
 	static String candidateLastName = "";
-	static String actuallStatus="";
+	static String actuallStatus = "";
 
 	public CanditureForm(WebDriver driver) {
 		this.driver = driver;
@@ -28,6 +30,7 @@ public class CanditureForm {
 	By saveCanditureDetail = By.id("btnSave");
 	By getStatusText = By.xpath("//span[@class=\"status\"]");
 
+	@Step("Enter the first name of Candidate")
 	public CanditureForm firstName() {
 		WebElement firstName = driver.findElement(enterFirstName);
 		candidateFirstName = RandomData.getRandomName();
@@ -35,6 +38,7 @@ public class CanditureForm {
 		return new CanditureForm(driver);
 	}
 
+	@Step("Enter the last name of Candidate")
 	public CanditureForm lastName() {
 		WebElement lastName = driver.findElement(enterLastName);
 		candidateLastName = RandomData.getRandomName();
@@ -42,42 +46,49 @@ public class CanditureForm {
 		return new CanditureForm(driver);
 	}
 
+	@Step("Enter the email id of Candidate")
 	public CanditureForm emailId() {
 		WebElement emailId = driver.findElement(enterEmailId);
 		PageHandle.clickAndSend(emailId, RandomData.getRandomName() + "@gmail.com");
 		return new CanditureForm(driver);
 	}
 
+	@Step("Enter the contact number of Candidate")
 	public CanditureForm contactNum() {
 		WebElement contactNum = driver.findElement(enterContactNumebr);
 		PageHandle.clickAndSend(contactNum, RandomData.getRandomNumber());
 		return new CanditureForm(driver);
 	}
 
+	@Step("Select the role for which the candidate is applying")
 	public CanditureForm roleSelection() {
 		WebElement dropDownRoleSelection = driver.findElement(selectRole);
 		PageHandle.selectRandomOption(dropDownRoleSelection);
 		return new CanditureForm(driver);
 	}
 
+	@Step("Upload the resume for the Candidate")
 	public CanditureForm uploadResume() {
 		WebElement uploadDocs = driver.findElement(uploadResume);
 		uploadDocs.sendKeys(Constants.RESUMEPATH);
 		return new CanditureForm(driver);
 	}
 
+	@Step("Click on the save button to save the data for the candidate")
 	public CanditureForm clickSaveButton() {
 		WebElement saveButton = driver.findElement(saveCanditureDetail);
 		saveButton.click();
 		return new CanditureForm(driver);
 	}
 
+	@Step("Validate for the status on candidate profile")
 	public CanditureForm getApplicationStatus() {
 		WebElement getStatus = driver.findElement(getStatusText);
 		actuallStatus = getStatus.getText();
 		return new CanditureForm(driver);
 	}
-	
+
+	@Step("Assertion on candidate profile status")
 	public void assertApplicationStatus() {
 		Assert.assertEquals(actuallStatus, Constants.EXPECTEDRESULT);
 	}

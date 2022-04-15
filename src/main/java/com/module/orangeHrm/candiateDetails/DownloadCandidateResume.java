@@ -9,6 +9,9 @@ import org.openqa.selenium.WebElement;
 import com.module.orangeHrm.utils.Constants;
 import com.module.orangeHrm.utils.PageHandle;
 
+import io.qameta.allure.Attachment;
+import io.qameta.allure.Step;
+
 public class DownloadCandidateResume {
 
 	By enterCandidateName = By.xpath("//input[@name='candidateSearch[candidateName]']");
@@ -22,6 +25,7 @@ public class DownloadCandidateResume {
 		this.driver = driver;
 	}
 
+	@Step("Enter the candidate name to search the candidate profile")
 	public DownloadCandidateResume enterCandidateName() {
 		WebElement candidateName = driver.findElement(enterCandidateName);
 		PageHandle.clickAndSend(candidateName,
@@ -29,12 +33,15 @@ public class DownloadCandidateResume {
 		return new DownloadCandidateResume(driver);
 	}
 
+	@Step("Click on the search button to execute the search list")
 	public DownloadCandidateResume clickOnSearchButton() {
 		WebElement clickSearchButton = driver.findElement(searchButton);
 		clickSearchButton.click();
 		return new DownloadCandidateResume(driver);
 	}
 
+	@Attachment(value = "", type = ".pdf")
+	@Step("Click on the download tab to download the resume and the candidate profile")
 	public DownloadCandidateResume downloadResume() {
 		deleteDownloadedResume();
 		WebElement clickOnDownload = driver.findElement(downloadResume);
@@ -43,6 +50,7 @@ public class DownloadCandidateResume {
 		return new DownloadCandidateResume(driver);
 	}
 
+	@Step("Check whether the file already exist if yes then delete the previous downloaded resume")
 	public void deleteDownloadedResume() {
 		file = new File(System.getProperty("user.dir") + "/" + Constants.RESUME);
 		if (file.exists()) {

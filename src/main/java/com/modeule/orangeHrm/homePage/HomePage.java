@@ -8,6 +8,7 @@ import org.testng.Assert;
 import com.module.orangeHrm.utils.Constants;
 
 import io.netty.util.Constant;
+import io.qameta.allure.Step;
 
 public class HomePage {
 	WebDriver driver;
@@ -21,19 +22,22 @@ public class HomePage {
 	By clickOnCandidate = By.id("menu_recruitment_viewCandidates");
 	By clickOnAdd = By.cssSelector("input#btnAdd");
 
+	@Step("validation on logged in successfully")
 	public HomePage selectRecruitment() {
 		WebElement clickOnRecuirtment = driver.findElement(clickOnRecruitment);
-		clickOnRecuirtment.click();
 		loginValidation = clickOnRecuirtment.getText();
 		Assert.assertEquals(loginValidation, Constants.EXPECTEDLOGINPAGEVALIDATION);
+		clickOnRecuirtment.click();
 		return new HomePage(driver);
 	}
 
+	@Step("Clicked on candidate tab")
 	public HomePage selectCandidate() {
 		driver.findElement(clickOnCandidate).click();
 		return new HomePage(driver);
 	}
 
+	@Step("Clicked on Add button to update the candidate profile")
 	public HomePage clickOnAdd() {
 		driver.findElement(clickOnAdd).click();
 		return new HomePage(driver);

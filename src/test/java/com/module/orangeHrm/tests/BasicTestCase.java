@@ -27,6 +27,7 @@ public class BasicTestCase {
 	DownloadCandidateResume downloadCandidateResume;
 
 	@BeforeMethod
+	@Description("Open Chrome as an broswer and to go the OrangeHrm URL")
 	public void setup() {
 		System.setProperty("webdriver.chrome.driver", "C:\\BrowserStack\\chromedriver.exe");
 		driver = new ChromeBrowser().getDriver();
@@ -36,28 +37,35 @@ public class BasicTestCase {
 	}
 
 	@BeforeMethod
-	@Severity(SeverityLevel.CRITICAL)
-	@Description("Logged in as an Admin")
+	@Severity(SeverityLevel.BLOCKER)
+	@Description("Login with the valid credentials")
 	public void toLoginAsAdmin() {
 		loginPage = new LoginPage(driver);
 		loginPage.enterUserName().enterPassword().loginButton().click();
-		canditateDetails = new HomePage(driver);
-		canditateDetails.selectRecruitment().selectCandidate().clickOnAdd();
+	}
+
+	@Description("Clicking on candidate and then to add the candidate profile")
+	public void selectingCandidateToUpdateProfile() {
+		canditateDetails = new HomePage(driver).selectRecruitment().selectCandidate().clickOnAdd();
 	}
 
 	@Test(priority = 1, description = "Creating canditate details")
 	@Severity(SeverityLevel.CRITICAL)
 	@Description("Giving the details of the candiate and submitting the resume")
 	public void createANewCandidateProfile() {
+		selectingCandidateToUpdateProfile();
 		canditureForm = new CanditureForm(driver);
-		canditureForm.firstName().lastName().emailId().contactNum().roleSelection().uploadResume().clickSaveButton()
-				.getApplicationStatus().assertApplicationStatus();
+		canditureForm.firstName().lastName().emailId().contactNum().roleSelection().uploadResume()
+		.clickSaveButton().getApplicationStatus().assertApplicationStatus();
 	}
 
-	@Test
+	@Test(description = "Downloading the resume")
+	@Severity(SeverityLevel.CRITICAL)
+	@Description("Search for the candidate which got created and download the resume")
 	public void enter_userDetails() {
-		downloadCandidateResume = new DownloadCandidateResume(driver);
-		downloadCandidateResume.enterCandidateName().clickOnSearchButton().downloadResume();
+		canditateDetails = new HomePage(driver).selectRecruitment().selectCandidate();
+		downloadCandidateResume = new DownloadCandidateResume(driver).enterCandidateName()
+				.clickOnSearchButton().downloadResume();
 	}
 
 	@AfterTest
