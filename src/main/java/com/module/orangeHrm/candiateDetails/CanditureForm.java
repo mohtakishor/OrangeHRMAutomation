@@ -20,6 +20,7 @@ public class CanditureForm {
 	static String candidateFirstName = "";
 	static String candidateLastName = "";
 	static String actuallStatus = "";
+	static String successMessage = "";
 
 	public CanditureForm(WebDriver driver) {
 		this.driver = driver;
@@ -33,6 +34,7 @@ public class CanditureForm {
 	By uploadResume = By.xpath("//input[@id='addCandidate_resume']");
 	By saveCanditureDetail = By.id("btnSave");
 	By getStatusText = By.xpath("//span[@class=\"status\"]");
+	By successfullySaved = By.xpath("//div[@class=\"message success fadable\"]");
 
 	@Step("Enter the first name of Candidate")
 	public CanditureForm firstName() {
@@ -89,7 +91,15 @@ public class CanditureForm {
 		WebElement saveButton = driver.findElement(saveCanditureDetail);
 		saveButton.click();
 		logger.info("Click on save button to save the canditure details");
+		successMessage = driver.findElement(successfullySaved).getText();
+		logger.info("Succesfully saved");
+		assertSuccessMessage();
 		return new CanditureForm(driver);
+	}
+
+	@Step("Validate success message")
+	public void assertSuccessMessage() {
+		Assert.assertEquals(successMessage, Constants.VALIDATESUCCESSMESSAGE);
 	}
 
 	@Step("Validate for the status on candidate profile")

@@ -2,40 +2,40 @@
 <testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="57392" started-at="2022-04-16T00:43:08 IST" finished-at="2022-04-16T00:44:06 IST">
+  <suite name="Default suite" duration-ms="95028" started-at="2022-04-16T10:28:08 IST" finished-at="2022-04-16T10:29:43 IST">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="57392" started-at="2022-04-16T00:43:08 IST" finished-at="2022-04-16T00:44:06 IST">
+    <test name="Default test" duration-ms="95028" started-at="2022-04-16T10:28:08 IST" finished-at="2022-04-16T10:29:43 IST">
       <class name="com.module.orangeHrm.tests.BasicTestCase">
-        <test-method status="PASS" signature="setup()[pri:0, instance:com.module.orangeHrm.tests.BasicTestCase@4c4d362a]" name="setup" is-config="true" duration-ms="17790" started-at="2022-04-16T00:43:08 IST" finished-at="2022-04-16T00:43:26 IST">
+        <test-method status="PASS" signature="setup()[pri:0, instance:com.module.orangeHrm.tests.BasicTestCase@76b74e9c]" name="setup" is-config="true" duration-ms="26444" started-at="2022-04-16T10:28:08 IST" finished-at="2022-04-16T10:28:35 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="toLoginAsAdmin()[pri:0, instance:com.module.orangeHrm.tests.BasicTestCase@4c4d362a]" name="toLoginAsAdmin" is-config="true" duration-ms="5645" started-at="2022-04-16T00:43:26 IST" finished-at="2022-04-16T00:43:32 IST">
+        <test-method status="PASS" signature="toLoginAsAdmin()[pri:0, instance:com.module.orangeHrm.tests.BasicTestCase@76b74e9c]" name="toLoginAsAdmin" is-config="true" duration-ms="8522" started-at="2022-04-16T10:28:35 IST" finished-at="2022-04-16T10:28:43 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- toLoginAsAdmin -->
-        <test-method status="PASS" signature="createANewCandidateProfile()[pri:1, instance:com.module.orangeHrm.tests.BasicTestCase@4c4d362a]" name="createANewCandidateProfile" duration-ms="6019" started-at="2022-04-16T00:43:32 IST" description="Creating canditate details" finished-at="2022-04-16T00:43:38 IST">
+        <test-method status="PASS" signature="createANewCandidateProfile()[pri:1, instance:com.module.orangeHrm.tests.BasicTestCase@76b74e9c]" name="createANewCandidateProfile" duration-ms="29310" started-at="2022-04-16T10:28:43 IST" description="Creating canditate details" finished-at="2022-04-16T10:29:13 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- createANewCandidateProfile -->
-        <test-method status="PASS" signature="close()[pri:0, instance:com.module.orangeHrm.tests.BasicTestCase@4c4d362a]" name="close" is-config="true" duration-ms="292" started-at="2022-04-16T00:43:38 IST" finished-at="2022-04-16T00:43:38 IST">
+        <test-method status="PASS" signature="close()[pri:0, instance:com.module.orangeHrm.tests.BasicTestCase@76b74e9c]" name="close" is-config="true" duration-ms="387" started-at="2022-04-16T10:29:13 IST" finished-at="2022-04-16T10:29:13 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- close -->
-        <test-method status="PASS" signature="setup()[pri:0, instance:com.module.orangeHrm.tests.BasicTestCase@4c4d362a]" name="setup" is-config="true" duration-ms="11901" started-at="2022-04-16T00:43:38 IST" finished-at="2022-04-16T00:43:50 IST">
+        <test-method status="PASS" signature="setup()[pri:0, instance:com.module.orangeHrm.tests.BasicTestCase@76b74e9c]" name="setup" is-config="true" duration-ms="10487" started-at="2022-04-16T10:29:13 IST" finished-at="2022-04-16T10:29:23 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="toLoginAsAdmin()[pri:0, instance:com.module.orangeHrm.tests.BasicTestCase@4c4d362a]" name="toLoginAsAdmin" is-config="true" duration-ms="5303" started-at="2022-04-16T00:43:50 IST" finished-at="2022-04-16T00:43:56 IST">
+        <test-method status="PASS" signature="toLoginAsAdmin()[pri:0, instance:com.module.orangeHrm.tests.BasicTestCase@76b74e9c]" name="toLoginAsAdmin" is-config="true" duration-ms="5760" started-at="2022-04-16T10:29:23 IST" finished-at="2022-04-16T10:29:29 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- toLoginAsAdmin -->
-        <test-method status="PASS" signature="enter_userDetails()[pri:0, instance:com.module.orangeHrm.tests.BasicTestCase@4c4d362a]" name="enter_userDetails" duration-ms="9613" started-at="2022-04-16T00:43:56 IST" description="Downloading the resume" finished-at="2022-04-16T00:44:05 IST">
+        <test-method status="PASS" signature="enter_userDetails()[pri:0, instance:com.module.orangeHrm.tests.BasicTestCase@76b74e9c]" name="enter_userDetails" duration-ms="13388" started-at="2022-04-16T10:29:29 IST" description="Downloading the resume" finished-at="2022-04-16T10:29:43 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- enter_userDetails -->
-        <test-method status="PASS" signature="close()[pri:0, instance:com.module.orangeHrm.tests.BasicTestCase@4c4d362a]" name="close" is-config="true" duration-ms="421" started-at="2022-04-16T00:44:05 IST" finished-at="2022-04-16T00:44:06 IST">
+        <test-method status="PASS" signature="close()[pri:0, instance:com.module.orangeHrm.tests.BasicTestCase@76b74e9c]" name="close" is-config="true" duration-ms="431" started-at="2022-04-16T10:29:43 IST" finished-at="2022-04-16T10:29:43 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- close -->

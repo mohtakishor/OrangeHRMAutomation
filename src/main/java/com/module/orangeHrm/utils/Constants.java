@@ -8,5 +8,6 @@ public class Constants {
 	public static final String EXPECTEDRESULT = "Status: Application Initiated";
 	public static final String EXPECTEDLOGINPAGEVALIDATION = "Recruitment";
 	public static final String DOWNLADEDRESUMEPATH = System.getProperty("user.dir") + "/" + Constants.RESUME;
+	public static final String VALIDATESUCCESSMESSAGE = "Successfully Saved";
 
 }
