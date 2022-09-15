@@ -1,4 +1,4 @@
-# TurnTechAssignment
+# OrangeHRM Automation
 #Project DescriptionThis project is based upon the web application of OrangeHRM 
 where a user can create his candidate profile and update the resume 
 and also the user is able to download the same resume which has been uploaded by the user.
